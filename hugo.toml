@@ -1,0 +1,21 @@
+baseURL = 'https://example.org/'
+locale = 'it-it'
+title = 'Federico'
+theme = "congo"
+copyright = "© 2026 Federico D'Ambrosio · Licenza [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)"
+
+
+[params]
+colorScheme = "navy"        # or pick another built-in scheme
+defaultAppearance = "light"   # or "light" — sets initial mode before user toggles
+autoSwitchAppearance = true  # respects OS prefers-color-scheme too
+mainSections = ["posts"]
+list.showSummary = true		# Show explicit summary of posts 
+defaultContentLanguage = "it"
+  
+[params.homepage]
+layout = "page"            # Valid options are "page", "profile", or "custom"
+showRecent = true          # Set to true to show your recent posts
+recentLimit = 5        # Number of posts to display on the homepage
+showMoreLink = true        # Shows a link to view all posts
+showMoreLinkDest = "/posts" # Path to your full posts page

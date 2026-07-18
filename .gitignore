@@ -1,0 +1,62 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp/
+.pnp.js
+.cache/
+.parcel-cache/
+dist/
+
+# Hugo / static site generator
+public/
+resources/_gen/
+hugo_stats.json
+hugo_cache/
+
+# Built asset folders (theme/tooling)
+assets/css/compiled/
+assets/css/*.min.css
+
+# Theme/node build artifacts
+themes/**/node_modules/
+themes/**/dist/
+
+# Environment files
+.env
+.env.*
+
+# Python
+venv/
+ENV/
+env/
+__pycache__/
+.pytest_cache/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Logs, temp files
+*.log
+*.tmp
+*.temp
+*.swp
+*~
+Thumbs.db
+Desktop.ini
+
+# Coverage
+coverage/
+
+# Misc
+.sass-cache/
+node_modules/.cache/
