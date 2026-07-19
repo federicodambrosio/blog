@@ -23,6 +23,7 @@ showMoreLinkDest = "/posts" # Path to your full posts page
 [params.article]
 showAuthor = false
 showReadingTime = false
+showPagination = false
 
 [params.author]
 name = "Federico"
