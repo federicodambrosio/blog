@@ -20,6 +20,8 @@ recentLimit = 5             # Number of posts to display on the homepage
 showMoreLink = true         # Shows a link to view all posts
 showMoreLinkDest = "/posts" # Path to your full posts page
 
+[params.article]
+showAuthor = false
 
 [params.author]
 name = "Federico"
