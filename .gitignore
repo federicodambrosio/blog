@@ -60,3 +60,4 @@ coverage/
 # Misc
 .sass-cache/
 node_modules/.cache/
+.env

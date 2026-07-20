@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://blog.dambrosio.nl/'
 locale = 'it-it'
 title = 'Federico'
 theme = "congo"
@@ -34,3 +34,7 @@ links = [
     { rss = "/index.xml" },
     { email = "mailto:blog@dambrosio.nl" },
 ]
+
+[params.header]
+logo = "img/blue_dot.png"
+showTitle = false
