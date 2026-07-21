@@ -15,14 +15,14 @@ fi
 hugo --minify
 git rev-parse HEAD > public/version.txt
 
-echo "Running dry-run first..."
-lftp -u "$FTP_USER,$FTP_PASS" "$FTP_HOST" <<EOF
-mirror -R --delete --dry-run --verbose public/ "$FTP_REMOTE_PATH"
-bye
-EOF
+# echo "Running dry-run first..."
+# lftp -u "$FTP_USER,$FTP_PASS" "$FTP_HOST" <<EOF
+# mirror -R --delete --dry-run --verbose public/ "$FTP_REMOTE_PATH"
+# bye
+# EOF
 
-read -p "Review the dry-run output above. Proceed with real deploy? [y/N] " confirm
-[[ "$confirm" == [yY] ]] || { echo "Aborted."; exit 1; }
+# read -p "Review the dry-run output above. Proceed with real deploy? [y/N] " confirm
+# [[ "$confirm" == [yY] ]] || { echo "Aborted."; exit 1; }
 
 lftp -u "$FTP_USER,$FTP_PASS" "$FTP_HOST" <<EOF
 mirror -R --delete --verbose public/ "$FTP_REMOTE_PATH"
