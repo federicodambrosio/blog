@@ -61,3 +61,7 @@ coverage/
 .sass-cache/
 node_modules/.cache/
 .env
+
+# Stuff from IDE
+.frontmatter/
+.vscode/
