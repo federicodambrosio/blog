@@ -1,0 +1,35 @@
+repos:
+  # General hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=2000']  # catches accidentally-committed high-res images/videos
+      - id: check-yaml           # catches broken frontmatter/workflow YAML
+      - id: check-toml           # catches broken hugo.toml
+      - id: mixed-line-ending
+
+  # Secret scanning — important since this is going public
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.0
+    hooks:
+      - id: gitleaks
+
+  # Local project-specific checks
+  - repo: local
+    hooks:
+      - id: hugo-build-check
+        name: Hugo build check
+        entry: bash -c 'hugo --minify --gc -D 2>&1 | tee /tmp/hugo-build.log; grep -qi "error" /tmp/hugo-build.log && exit 1 || exit 0'
+        language: system
+        pass_filenames: false
+        files: '\.(md|toml|html)$'
+
+      - id: no-env-committed
+        name: Block .env from being committed
+        entry: bash -c '! git diff --cached --name-only | grep -q "^\.env$"'
+        language: system
+        pass_filenames: false
