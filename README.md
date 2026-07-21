@@ -41,10 +41,6 @@ A pre-commit hook (`check-draft-locations`) enforces the split: it fails if a fi
 
 ## Deployment
 
-Deployment is automated via GitHub Actions (`.github/workflows/deploy.yml`) — every push to `main` builds the site with Hugo and pushes the output to the host over FTP. FTP credentials are stored as GitHub repository secrets (`FTP_HOST`, `FTP_USER`, `FTP_PASS`, `FTP_REMOTE_PATH`) and are never committed to the repo.
-
-### Manual deploy
-
 A local `deploy.sh` script is also available, using credentials from a git-ignored `.env` file:
 
 ```bash
