@@ -33,3 +33,9 @@ repos:
         entry: bash -c '! git diff --cached --name-only | grep -q "^\.env$"'
         language: system
         pass_filenames: false
+      - id: check-draft-locations
+        name: Check drafts/posts are in the right folder
+        entry: python3 scripts/check_draft_locations.py
+        language: system
+        pass_filenames: false
+        files: '^(content/posts/|drafts/).*\.md$'
