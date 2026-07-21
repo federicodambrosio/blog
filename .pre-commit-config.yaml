@@ -27,7 +27,6 @@ repos:
         language: system
         pass_filenames: false
         files: '\.(md|toml|html)$'
-
       - id: no-env-committed
         name: Block .env from being committed
         entry: bash -c '! git diff --cached --name-only | grep -q "^\.env$"'
