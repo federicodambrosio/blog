@@ -33,6 +33,7 @@ links = [
     { twitter = "https://twitter.com/fededambri" },
     { rss = "/index.xml" },
     { email = "mailto:blog@dambrosio.nl" },
+    { github = "https://github.com/federicodambrosio/blog" },
 ]
 
 [params.header]
