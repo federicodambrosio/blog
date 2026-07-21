@@ -38,3 +38,12 @@ links = [
 [params.header]
 logo = "img/blue_dot.png"
 showTitle = false
+
+# This is used to manage drafts and take them out of the repo
+[module]
+[[module.mounts]]
+source = "content"
+target = "content"
+[[module.mounts]]
+source = "drafts"
+target = "content/posts"

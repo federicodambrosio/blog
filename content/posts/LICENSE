@@ -1,0 +1,12 @@
+The content in this directory (blog posts and other written material)
+is licensed under the Creative Commons Attribution-NoDerivatives 4.0
+International License (CC BY-ND 4.0).
+
+Full license text: <https://creativecommons.org/licenses/by-nd/4.0/legalcode>
+
+---
+
+Note: this license applies only to the content in this directory.
+The code in the rest of this repository (Hugo configuration, layouts,
+custom CSS, deployment workflows) is licensed separately under the
+MIT License — see the LICENSE file at the repository root.
