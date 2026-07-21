@@ -1,0 +1,4 @@
+.prose blockquote strong {
+  color: rgb(var(--color-neutral-900));
+  font-weight: 800;
+}
