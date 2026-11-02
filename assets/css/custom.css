@@ -10,6 +10,12 @@
   font-family: "Source Serif 4", Georgia, serif;
 }
 
+@media (min-width: 1024px) {
+  article > section.prose > div.min-w-0.max-w-prose {
+    max-width: 80ch;
+  }
+}
+
 .prose blockquote strong {
   color: rgb(var(--color-neutral-900));
   font-weight: 800;
