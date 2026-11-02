@@ -10,6 +10,16 @@
   font-family: "Source Serif 4", Georgia, serif;
 }
 
+.prose a {
+  color: rgb(var(--color-primary-600));
+  text-decoration-line: underline;
+  text-underline-offset: 0.15em;
+}
+
+.dark .prose a {
+  color: rgb(var(--color-primary-300));
+}
+
 @media (min-width: 1024px) {
   article>section.prose>div.min-w-0.max-w-prose {
     max-width: 80ch;

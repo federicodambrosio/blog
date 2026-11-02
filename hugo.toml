@@ -27,7 +27,7 @@ showPagination = false
 [params.author]
 name = "Federico"
 image = "img/blue_circle.png" # put file in /assets/img/
-headline = "Il posto dove scrivo quello che scrivo. Il perché lo spiego **[qua](/posts/first-post.md)**."
+headline = "Il posto dove scrivo quello che scrivo. Il perché lo spiego **[qua](/posts/manifesto/)**."
 links = [
     { twitter = "https://twitter.com/fededambri" },
     { rss = "/index.xml" },
