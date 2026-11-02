@@ -16,6 +16,56 @@
   }
 }
 
+@media (min-width: 1280px) {
+  article > section.prose {
+    position: relative;
+  }
+
+  article > section.prose.has-sidenotes > .footnotes {
+    display: none;
+  }
+
+  article > section.prose > .sidenotes {
+    position: absolute;
+    top: 0;
+    left: calc(80ch + 2rem);
+    width: 24ch;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  article > section.prose > .sidenotes ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  article > section.prose > .sidenotes li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: rgb(var(--color-neutral-600));
+  }
+
+  article > section.prose > .sidenotes li::before {
+    content: attr(data-note-number);
+    margin-inline-end: 0.4rem;
+    font-weight: 700;
+  }
+
+  .dark article > section.prose > .sidenotes li {
+    color: rgb(var(--color-neutral-300));
+  }
+
+  article > section.prose > .sidenotes li p {
+    margin: 0;
+  }
+}
+
 .prose blockquote strong {
   color: rgb(var(--color-neutral-900));
   font-weight: 800;
