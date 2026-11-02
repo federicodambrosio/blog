@@ -70,6 +70,11 @@
       enhanced = true;
     }
 
+    const sectionRect = section.getBoundingClientRect();
+    const contentRect = content.getBoundingClientRect();
+    const gap = parseFloat(getComputedStyle(section).fontSize) * 2;
+    aside.style.left = `${contentRect.right - sectionRect.left + gap}px`;
+
     const sectionTop = section.getBoundingClientRect().top;
     const orderedNotes = positionedNotes
       .map(({ note, reference }) => ({
