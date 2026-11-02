@@ -1,5 +1,5 @@
 baseURL = 'https://blog.dambrosio.nl/'
-locale = 'it-it'
+defaultContentLanguage = "it"
 title = 'Federico'
 theme = "congo"
 copyright = "© 2026 Federico D'Ambrosio · Licenza [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)"
@@ -11,7 +11,6 @@ defaultAppearance = "light"   # or "light" — sets initial mode before user tog
 autoSwitchAppearance = true   # respects OS prefers-color-scheme too
 mainSections = ["posts"]
 list.showSummary = true       # Show explicit summary of posts
-defaultContentLanguage = "it"
 
 [params.homepage]
 layout = "profile"          # Valid options are "page", "profile", or "custom"
