@@ -48,24 +48,15 @@ A local `deploy.sh` script is also available, using credentials from a git-ignor
 ```
 
 It will:
-
-1. Warn if there are uncommitted local changes
-2. Build the site and stamp it with the current commit SHA (`public/version.txt`)
+1. Warn if there are uncommitted local changes; for a clean worktree, check the live `version.txt` and skip the upload if this commit is already deployed
+2. Build the site and stamp it with the current commit SHA (`public/version.txt`); deployments made with uncommitted changes are marked `-dirty`
 3. Deploy over FTP, mirroring `public/` to the configured remote path
 
 Apache cache headers in `static/.htaccess` give fingerprinted assets (including the versioned font) a one-year immutable lifetime and revalidate unversioned fonts, images, icons, and web manifests after one week.
 
-**Double-check `FTP_REMOTE_PATH` in `.env` before running.** A full mirror-delete against the wrong remote path can wipe far more than intended — this has happened once already. `set -euo pipefail` also stops the script immediately on any build/deploy error rather than continuing with a partial build.
+**Double-check `FTP_REMOTE_PATH` in `.env` before running.** A full mirror-delete against the wrong remote path can wipe far more than intended — this has happened once already. `set -euo pipefail` also stops the script immediately on any build/deploy error rather than continuing with a partial build. The deployment check fails rather than uploading if the live version marker cannot be fetched.
 
-### Checking the deployment is in sync
-
-Every build stamps `public/version.txt` with the git commit SHA it was built from. To confirm the live site matches your latest local commit:
-
-```bash
-./scripts/check_deploy.sh
-```
-
-This compares `git rev-parse HEAD` against `https://blog.dambrosio.nl/version.txt` and reports whether they match.
+Clean deployments stamp `public/version.txt` with the git commit SHA. Deployments made with uncommitted changes use a `-dirty` suffix, so they are not mistaken for a clean commit deployment.
 
 ## Pre-commit hooks
 
