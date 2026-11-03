@@ -1,6 +1,8 @@
 # blog.dambrosio.nl
 
-Personal blog built with [Hugo](https://gohugo.io) and the [Congo](https://github.com/jpanther/congo) theme, deployed at [blog.dambrosio.nl](https://blog.dambrosio.nl).
+Personal blog built with [Hugo](https://gohugo.io) and the
+[Congo](https://github.com/jpanther/congo) theme, deployed at
+[blog.dambrosio.nl](https://blog.dambrosio.nl).
 
 ## Stack
 
@@ -29,15 +31,21 @@ hugo server --ignoreCache --disableFastRender
 
 ## Drafts
 
-Draft posts live outside version control, in a `drafts/` folder at the repo root (git-ignored). Hugo mounts this folder into `content/posts` at build time, so drafts preview locally exactly like published posts:
+Draft posts live outside version control, in a `drafts/` folder at the repo root (git-ignored). Hugo
+mounts this folder into `content/posts` at build time, so drafts preview locally exactly like
+published posts:
 
 ```bash
 hugo server -D
 ```
 
-Move a post into `content/posts/` (and drop `draft: true` from its frontmatter, if set) once it's ready to publish. Production builds (`hugo --minify`, no `-D`) never include anything from `drafts/`.
+Move a post into `content/posts/` (and drop `draft: true` from its frontmatter, if set) once it's
+ready to publish. Production builds (`hugo --minify`, no `-D`) never include anything from
+`drafts/`.
 
-A pre-commit hook (`check-draft-locations`) enforces the split: it fails if a file marked `draft: true` is committed under `content/posts/`, or if a file under `drafts/` is missing that marker.
+A pre-commit hook (`check-draft-locations`) enforces the split: it fails if a file marked
+`draft: true` is committed under `content/posts/`, or if a file under `drafts/` is missing that
+marker.
 
 ## Deployment
 
@@ -48,31 +56,48 @@ A local `deploy.sh` script is also available, using credentials from a git-ignor
 ```
 
 It will:
-1. Warn if there are uncommitted local changes; for a clean worktree, check the live `version.txt` and skip the upload if this commit is already deployed
-2. Build the site and stamp it with the current commit SHA (`public/version.txt`); deployments made with uncommitted changes are marked `-dirty`
+
+1. Warn if there are uncommitted local changes; for a clean worktree, check the live `version.txt`
+   and skip the upload if this commit is already deployed
+2. Build the site and stamp it with the current commit SHA (`public/version.txt`); deployments made
+   with uncommitted changes are marked `-dirty`
 3. Deploy over FTP, mirroring `public/` to the configured remote path
 
-Apache cache headers in `static/.htaccess` give fingerprinted assets (including the versioned font) a one-year immutable lifetime and revalidate unversioned fonts, images, icons, and web manifests after one week.
+Apache cache headers in `static/.htaccess` give fingerprinted assets (including the versioned font)
+a one-year immutable lifetime and revalidate unversioned fonts, images, icons, and web manifests
+after one week.
 
-**Double-check `FTP_REMOTE_PATH` in `.env` before running.** A full mirror-delete against the wrong remote path can wipe far more than intended — this has happened once already. `set -euo pipefail` also stops the script immediately on any build/deploy error rather than continuing with a partial build. The deployment check fails rather than uploading if the live version marker cannot be fetched.
+**Double-check `FTP_REMOTE_PATH` in `.env` before running.** A full mirror-delete against the wrong
+remote path can wipe far more than intended — this has happened once already. `set -euo pipefail`
+also stops the script immediately on any build/deploy error rather than continuing with a partial
+build. The deployment check fails rather than uploading if the live version marker cannot be
+fetched.
 
-Clean deployments stamp `public/version.txt` with the git commit SHA. Deployments made with uncommitted changes use a `-dirty` suffix, so they are not mistaken for a clean commit deployment.
+Clean deployments stamp `public/version.txt` with the git commit SHA. Deployments made with
+uncommitted changes use a `-dirty` suffix, so they are not mistaken for a clean commit deployment.
 
 ## Pre-commit hooks
 
-This repo uses [pre-commit](https://pre-commit.com) to catch build errors and accidental secrets before they're committed.
+This repo uses [pre-commit](https://pre-commit.com) to catch build errors and accidental secrets
+before they're committed.
 
 ```bash
 pip install pre-commit
 pre-commit install
 ```
 
-Hooks include: trailing whitespace/EOF fixes, YAML/TOML validation, large-file checks, secret scanning ([gitleaks](https://github.com/gitleaks/gitleaks)), a Hugo build check, a guard against committing `.env`, and a check that drafts/posts live in the correct folder (see [Drafts](#drafts)).
+Hooks include: trailing whitespace/EOF fixes, YAML/TOML validation, large-file checks, secret
+scanning ([gitleaks](https://github.com/gitleaks/gitleaks)), Prettier formatting for Markdown with
+100-column prose wrapping, markdownlint checks, a Hugo build check, a guard against committing
+`.env`, and a check that drafts/posts live in the correct folder (see [Drafts](#drafts)).
 
 ## License
 
-The code in this repository (Hugo configuration, layouts, custom CSS, deployment workflows) is licensed under the [MIT License](LICENSE).
+The code in this repository (Hugo configuration, layouts, custom CSS, deployment workflows) is
+licensed under the [MIT License](LICENSE).
 
-The written content under `content/posts/` is licensed separately under [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/) — you may share it with attribution, but not create derivative works. See `content/posts/LICENSE` for the same notice inline.
+The written content under `content/posts/` is licensed separately under
+[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/) — you may share it with attribution,
+but not create derivative works. See `content/posts/LICENSE` for the same notice inline.
 
 The Congo theme (`themes/congo`) carries its own MIT license, included in that submodule.

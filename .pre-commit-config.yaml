@@ -21,6 +21,12 @@ repos:
   # Local project-specific checks
   - repo: local
     hooks:
+      - id: prettier-markdown
+        name: Prettier (Markdown)
+        entry: prettier --write --prose-wrap always --print-width 100
+        language: node
+        types: [markdown]
+        additional_dependencies: ['prettier@3.9.10']
       - id: hugo-build-check
         name: Hugo build check
         entry: bash -c 'hugo --minify --gc -D 2>&1 | tee /tmp/hugo-build.log; grep -qi "error" /tmp/hugo-build.log && exit 1 || exit 0'
@@ -38,3 +44,9 @@ repos:
         language: system
         pass_filenames: false
         files: '^(content/posts/|drafts/).*\.md$'
+
+  # Markdown style checks (after formatting)
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.24.0
+    hooks:
+      - id: markdownlint-cli2
