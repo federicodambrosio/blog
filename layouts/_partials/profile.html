@@ -1,0 +1,50 @@
+{{ $align := .align | default "center" }}
+<section
+  class="not-prose {{ if eq $align "start" }}
+    items-start
+  {{ else if eq $align "end" }}
+    items-end
+  {{ else }}
+    items-center
+  {{ end }} mb-3 flex flex-col"
+>
+  {{ $altText := site.Language.Params.Author.name | default "Author" }}
+  {{ with site.Language.Params.Author.image }}
+    {{ with resources.Get . }}
+      {{ $smallWebP := .Resize "144x webp" }}
+      {{ $largeWebP := .Resize "288x webp" }}
+      {{ $smallPNG := .Resize "144x" }}
+      {{ $largePNG := .Resize "288x" }}
+      <picture class="mb-2 h-auto w-36 rounded-full">
+        <source
+          type="image/webp"
+          srcset="{{ $smallWebP.RelPermalink }} 144w, {{ $largeWebP.RelPermalink }} 288w"
+          sizes="144px"
+        />
+        <img
+          src="{{ $largePNG.RelPermalink }}"
+          srcset="{{ $smallPNG.RelPermalink }} 144w, {{ $largePNG.RelPermalink }} 288w"
+          sizes="144px"
+          width="288"
+          height="288"
+          class="mb-2 h-auto w-36 rounded-full"
+          alt="{{ $altText }}"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+    {{ end }}
+  {{ end }}
+  <h1 class="text-4xl font-extrabold">
+    {{ site.Language.Params.Author.name | default site.Title }}
+  </h1>
+  {{ with site.Language.Params.Author.headline }}
+    <h2 class="text-xl text-neutral-500 dark:text-neutral-400">
+      {{ . | markdownify | emojify }}
+    </h2>
+  {{ end }}
+  <div class="mt-1 text-2xl">
+    {{ partialCached "author-links.html" . }}
+  </div>
+</section>

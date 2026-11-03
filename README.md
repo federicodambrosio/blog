@@ -53,6 +53,8 @@ It will:
 2. Build the site and stamp it with the current commit SHA (`public/version.txt`)
 3. Deploy over FTP, mirroring `public/` to the configured remote path
 
+Apache cache headers in `static/.htaccess` give fingerprinted assets (including the versioned font) a one-year immutable lifetime and revalidate unversioned fonts, images, icons, and web manifests after one week.
+
 **Double-check `FTP_REMOTE_PATH` in `.env` before running.** A full mirror-delete against the wrong remote path can wipe far more than intended — this has happened once already. `set -euo pipefail` also stops the script immediately on any build/deploy error rather than continuing with a partial build.
 
 ### Checking the deployment is in sync

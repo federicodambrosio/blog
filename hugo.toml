@@ -6,11 +6,13 @@ copyright = "© 2026 Federico D'Ambrosio · Licenza [CC BY-ND 4.0](https://creat
 
 
 [params]
-colorScheme = "navy"          # or pick another built-in scheme
-defaultAppearance = "light"   # or "light" — sets initial mode before user toggles
-autoSwitchAppearance = true   # respects OS prefers-color-scheme too
+description = "Blog personale di Federico D'Ambrosio: riflessioni e scritti su ciò che mi interessa."
+
+colorScheme = "navy"        # or pick another built-in scheme
+defaultAppearance = "light" # or "light" — sets initial mode before user toggles
+autoSwitchAppearance = true # respects OS prefers-color-scheme too
 mainSections = ["posts"]
-list.showSummary = true       # Show explicit summary of posts
+list.showSummary = true     # Show explicit summary of posts
 
 [params.homepage]
 layout = "profile"          # Valid options are "page", "profile", or "custom"
