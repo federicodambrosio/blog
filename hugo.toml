@@ -4,6 +4,7 @@ title = 'Federico'
 theme = "congo"
 copyright = "© 2026 Federico D'Ambrosio · Licenza [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)"
 
+enableRobotsTXT = false
 
 [params]
 description = "Blog personale di Federico D'Ambrosio: riflessioni e scritti su ciò che mi interessa."
